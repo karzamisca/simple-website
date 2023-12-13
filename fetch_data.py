@@ -10,7 +10,6 @@ client = pymongo.MongoClient('mongodb+srv://<username>:<password>@<cluster>/?ret
 db = client['<database>']
 coffee_collection = db['<collection>']
 cred_collection = db['<collection>']
-collection = db['<collection>']
 
 # Define a route to retrieve coffee data
 @app.route('/data/coffee-data', methods=['GET'])
