@@ -151,6 +151,19 @@ function checkLogin() {
     window.location.href = "login.html"; // Redirect to login page if not logged in
   }
 }
+// Function to generate a random unique string to serve as purchase code
+function generateRandomString(length) {
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let result = "";
+  const charactersLength = characters.length;
+
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+
+  return result;
+}
 // Function to confirm purchase
 function confirmPurchase() {
   const isLoggedIn = localStorage.getItem("loggedIn");
@@ -159,22 +172,32 @@ function confirmPurchase() {
     alert("Please login to confirm your purchase.");
     return;
   }
+  calculateTotal(); // Calculate the total price
+
+  const cartPanel = document.querySelector(".cart-panel");
+  const totalElement = document.querySelector(".total");
+  let totalPrice = 0;
+
+  if (totalElement) {
+    totalPrice = parseFloat(totalElement.textContent.split("$")[1]); // Get the total price from the UI
+  }
 
   const cartItems = document.querySelectorAll(".cart-item");
   const purchaseDetails = [];
-
+  const purchaseCode = generateRandomString(10);
   cartItems.forEach((item) => {
     const productId = item.dataset.productId;
     const quantity = parseInt(item.dataset.quantity);
     const title = item.innerHTML.split("x")[1].trim().split("-")[0].trim();
     const price = parseFloat(item.innerHTML.split("$")[1]);
-
     purchaseDetails.push({ productId, title, quantity, price });
   });
 
   const purchaseData = {
     username: storedUsername,
+    purchaseCode: purchaseCode,
     items: purchaseDetails,
+    totalPrice: totalPrice,
   };
 
   sendPurchaseDataToServer(purchaseData);
@@ -192,7 +215,10 @@ function sendPurchaseDataToServer(data) {
     .then((response) => response.json())
     .then((result) => {
       console.log("Purchase confirmed:", result);
-      alert("Purchase confirmed! Thank you for shopping with us.");
+      var purchaseCode = data.purchaseCode; // Retrieve purchaseCode from data object using 'var'
+      alert(
+        `Purchase confirmed! Your purchase code is: ${purchaseCode}\nThank you for shopping with us.`
+      );
       clearCart(); // Clear the cart after purchase confirmation
     })
     .catch((error) => {
