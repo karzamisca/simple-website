@@ -1,0 +1,61 @@
+/* Hide the cart panel initially */
+.cart-panel {
+  position: fixed;
+  top: 0;
+  right: -300px; /* Hide the cart off-screen */
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Show the cart panel when active */
+.cart-panel.active {
+  right: 0;
+}
+
+.cart-icon {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+/* Additional styling for cart items */
+.cart-content {
+  padding: 20px;
+}
+
+.cart-item {
+  margin-bottom: 10px;
+}
+/* Product Display Styling */
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.product {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  width: 200px;
+}
+
+.product img {
+  width: 100%;
+  height: auto;
+}
+
+.product-title {
+  font-weight: bold;
+}
+
+.product-price {
+  color: #007bff;
+}

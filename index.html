@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Coffee Shop</title>
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+      crossorigin="anonymous"
+    />
+    <!-- css -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="logout-button">
+      <button onclick="logout()">Logout</button>
+    </div>
+    <div class="cart-icon" onclick="toggleCart()">
+      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+    </div>
+
+    <!-- Shopping Cart Panel -->
+    <div class="cart-panel">
+      <!-- Cart Content -->
+      <div class="cart-content">
+        <!-- Cart items will be dynamically populated here -->
+      </div>
+      <!-- Clear Cart Button -->
+      <button onclick="clearCart()">Clear Cart</button>
+      <button onclick="confirmPurchase()">Confirm Purchase</button>
+    </div>
+    <!-- Product Display -->
+    <div class="products"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
