@@ -6,6 +6,10 @@ const purchaseSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  purchaseCode: {
+    type: String,
+    required: true,
+  },
   items: [
     {
       productId: {
@@ -26,6 +30,10 @@ const purchaseSchema = new mongoose.Schema({
       },
     },
   ],
+  totalPrice: {
+    type: Number,
+    required: true,
+  },
   purchaseDate: {
     type: Date,
     default: Date.now,
