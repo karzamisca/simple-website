@@ -6,11 +6,11 @@ app = Flask(__name__)
 CORS(app)
 
 # Establish MongoDB connection
-client = pymongo.MongoClient('mongodb+srv://MinhQuan:vigjcqq7@shop.90ydj5q.mongodb.net/?retryWrites=true&w=majority')
-db = client['shop']
-coffee_collection = db['coffee']
-cred_collection = db['credential']
-collection = db['purchases']
+client = pymongo.MongoClient('mongodb+srv://<username>:<password>@<cluster>/?retryWrites=true&w=majority')
+db = client['<database>']
+coffee_collection = db['<collection>']
+cred_collection = db['<collection>']
+collection = db['<collection>']
 
 # Define a route to retrieve coffee data
 @app.route('/data/coffee-data', methods=['GET'])
