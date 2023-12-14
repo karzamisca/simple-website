@@ -91,7 +91,7 @@ app.post("/purchase", async (req, res) => {
 mongoose.set("strictQuery", false);
 mongoose
   .connect(
-    "mongodb+srv://MinhQuan:vigjcqq7@shop.90ydj5q.mongodb.net/shop?retryWrites=true&w=majority"
+    "mongodb+srv://<username>:<password>@<cluster>.mongodb.net/<database>?retryWrites=true&w=majority"
   )
   .then(() => {
     console.log("connected to MongoDB");
