@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin Page</title>
+    <style>
+      /* Some basic styling */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="logout-button">
+      <button onclick="adminLogout()">Logout</button>
+    </div>
+    <h1>Admin Panel - Manage Product Quantities</h1>
+
+    <div>
+      <label for="productSelect">Select Product:</label>
+      <select id="productSelect"></select>
+    </div>
+
+    <div>
+      <label for="quantityInput">Enter Quantity:</label>
+      <input type="number" id="quantityInput" min="0" />
+    </div>
+
+    <div>
+      <button onclick="updateQuantity()">Update Quantity</button>
+    </div>
+
+    <script src="admin.js"></script>
+  </body>
+</html>
