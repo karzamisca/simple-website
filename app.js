@@ -11,7 +11,7 @@ async function loadProducts() {
   try {
     const productsContainer = document.querySelector(".products");
 
-    const response = await fetch("http://127.0.0.1:5000/data/coffee-data");
+    const response = await fetch("http://localhost:3000/coffee");
     const products = await response.json();
 
     console.log("Output: ", products);
@@ -23,6 +23,7 @@ async function loadProducts() {
         <img src="${product.image}" alt="${product.title}">
         <div class="product-title">${product.title}</div>
         <div class="product-price">$${product.price}</div>
+        <div class="product-quantity">In Storage: ${product.quantityInStorage}</div>
         <button onclick="addToCart(${product.id}, '${product.title}', ${product.price})">Add to Cart</button>
       `;
       productsContainer.appendChild(productItem);
@@ -106,11 +107,11 @@ function clearCart() {
 
 // Function to authenticate user credentials
 function authenticate(username, password) {
-  return fetch("http://127.0.0.1:5000/data/cred-data")
+  return fetch("http://localhost:3000/credential")
     .then((response) => response.json())
     .then((credentials) => {
       const foundUser = credentials.find(
-        (cred) => cred.user === username && cred.password === password
+        (cred) => cred.username === username && cred.password === password
       );
       return foundUser ? true : false;
     })
